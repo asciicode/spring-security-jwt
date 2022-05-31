@@ -1,0 +1,21 @@
+
+#set up properties
+PROJECT_ID: amplified-name-351903
+
+server:
+    port: 8080
+
+spring:
+    cloud:
+        config:
+            namespace: default
+            enabled: true
+            name: Cloud
+            profile: dev, cloud, firestore
+            label: master
+        gcp:
+            credentials:
+                location: classpath:key.json  
+            firestore:
+                project-id: ${PROJECT_ID:amplified-name-351903}
+                enabled: true
