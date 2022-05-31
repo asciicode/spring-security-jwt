@@ -18,6 +18,7 @@ public class MyUserDetailsService
   public UserDetails loadUserByUsername(String s)
     throws UsernameNotFoundException
   {
+    // TODO can be config in property file
     return new User("monash", "welcomeallen",
         new ArrayList<>());
   }
