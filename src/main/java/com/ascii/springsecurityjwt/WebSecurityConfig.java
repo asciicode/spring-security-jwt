@@ -49,11 +49,13 @@ public class WebSecurityConfig
   protected void configure(HttpSecurity httpSecurity)
     throws Exception
   {
-    httpSecurity.csrf().disable()
+    httpSecurity
         .authorizeRequests().antMatchers("/authenticate/login")
         .permitAll().anyRequest().authenticated().and()
         .exceptionHandling().and().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    httpSecurity.cors().disable().csrf()
+        .disable();
     httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
   }
