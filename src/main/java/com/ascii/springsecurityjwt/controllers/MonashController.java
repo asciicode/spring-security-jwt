@@ -25,7 +25,7 @@ import com.ascii.springsecurityjwt.services.FirestoreService;
 import com.ascii.springsecurityjwt.util.JwtUtil;
 
 @RestController
-@CrossOrigin(origins = { "${settings.cors_origi}" })
+@CrossOrigin(origins = { "${settings.cors_origin}" })
 public class MonashController
 {
 
