@@ -21,4 +21,4 @@ spring:
                 enabled: true
 
 settings:
-    cors_origin: http://localhost:3000
+    cors_origin: '*'
