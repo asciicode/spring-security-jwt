@@ -12,6 +12,11 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/*
+ * 
+ * This utility class encode and decode jwt
+ * 
+ */
 @Service
 public class JwtUtil
 {

@@ -10,6 +10,11 @@ import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.QuerySnapshot;
 
+/*
+ * 
+ * This service class check and save to firestore
+ * 
+ */
 @Service
 public class FirestoreService
 {

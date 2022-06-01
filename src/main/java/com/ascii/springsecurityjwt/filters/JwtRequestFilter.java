@@ -18,6 +18,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.ascii.springsecurityjwt.MyUserDetailsService;
 import com.ascii.springsecurityjwt.util.JwtUtil;
 
+/*
+ * 
+ * This class filters jwt request and login the user
+ * 
+ */
 @Component
 public class JwtRequestFilter
     extends OncePerRequestFilter
