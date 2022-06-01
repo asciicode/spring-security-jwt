@@ -1,6 +1,8 @@
 package com.ascii.springsecurityjwt.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.ascii.springsecurityjwt.MyUserDetailsService;
 import com.ascii.springsecurityjwt.models.AuthenticationRequest;
@@ -52,12 +55,19 @@ public class MonashController
     throws IOException
   {
     RestTemplate restTemplate = restTemplate();
-    System.out.println(restTemplate);
+    String urlTemplate = UriComponentsBuilder.fromHttpUrl("https://www.flickr.com/services/feeds/photos_public.gne")
+        .queryParam("tags", "{tags}")
+        .queryParam("format", "{format}")
+        .queryParam("nojsoncallback", "{nojsoncallback}")
+        .encode()
+        .toUriString();
 
-    String resourceUrl = "https://www.flickr.com/services/feeds/photos_public.gne?tags=" + tags
-        + "&format=json&nojsoncallback=1";
-    ResponseEntity<String> response = restTemplate.getForEntity(resourceUrl, String.class);
+    Map<String, String> params = new HashMap<>();
+    params.put("tags", tags);
+    params.put("format", "json");
+    params.put("nojsoncallback", "1");
 
+    ResponseEntity<String> response = restTemplate.getForEntity(urlTemplate, String.class, params);
     return response.getBody();
   }
 
@@ -82,7 +92,7 @@ public class MonashController
 
     final String jwt = jwtTokenUtil.generateToken(userDetails);
     // username save to firebase
-    // firestoreService.saveUser(authenticationRequest.getUsername());
+    firestoreService.saveUser(authenticationRequest.getUsername());
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
 
