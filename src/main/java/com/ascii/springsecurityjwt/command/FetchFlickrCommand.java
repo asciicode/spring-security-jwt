@@ -11,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 /*
  * 
- * This class async call fetches to flickr
+ * This class makes an async call to flickr
  * 
  */
 public class FetchFlickrCommand
