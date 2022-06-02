@@ -82,7 +82,7 @@ public class MonashController
 
     final String jwt = jwtTokenUtil.generateToken(userDetails);
     // username save to firebase
-    // firestoreService.saveUser(authenticationRequest.getUsername());
+    firestoreService.saveUser(authenticationRequest.getUsername());
     return ResponseEntity.ok(new AuthenticationResponse(jwt));
   }
 
